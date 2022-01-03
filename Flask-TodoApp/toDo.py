@@ -43,6 +43,11 @@ def deleteTodo(id):
 
     return redirect(url_for("index"))
 
+@app.route("/detail/<string:id>")
+def detailTodo(id):
+     todo = Todo.query.filter_by(id=id).first()
+
+     return render_template("detail.html",todo=todo)
 
 class Todo(db.Model):
     id = db.Column(db.Integer,primary_key=True)
